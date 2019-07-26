@@ -1,21 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/common_google_signin_btn_text_dark_focused">
 
   <TextView
       android:id="@+id/name"
-      style="@style/StatusText"/>
+      style="@style/StatusText"
+      android:layout_width="414dp"
+      android:background="#0055FF"
+      android:backgroundTint="#00000000"
+      android:backgroundTintMode="add"
+      android:padding="10dp"
+      android:textColor="#FFFFFF"/>
 
   <TextView
       android:id="@+id/opponent_name"
-      style="@style/StatusText"/>
+      style="@style/StatusText"
+      android:background="#FF0000"
+      android:padding="10dp"
+      android:textColor="#FFFFFF"/>
 
   <TextView
       android:id="@+id/status"
-      style="@style/StatusText"/>
+      style="@style/StatusText"
+      android:textColor="#FFFFFF"/>
+
+  <ProgressBar
+      android:id="@+id/progress_bar"
+      style="?android:attr/progressBarStyle"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:indeterminateTint="#ff0000"/>
 
   <TextView
       android:id="@+id/score"
@@ -29,39 +48,34 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:orientation="horizontal">
-
-    <Button
-        android:id="@+id/rock"
-        android:drawableTop="@drawable/rock"
-        android:text="@string/choice_rock"
-        style="@style/MoveButton"/>
-
-    <Button
-        android:id="@+id/paper"
-        android:drawableTop="@drawable/paper"
-        android:text="@string/choice_paper"
-        style="@style/MoveButton"/>
-
-    <Button
-        android:id="@+id/scissors"
-        android:drawableTop="@drawable/scissors"
-        android:text="@string/choice_scissors"
-        style="@style/MoveButton"/>
   </LinearLayout>
 
   <Button
-      android:id="@+id/find_opponent"
+      android:id="@+id/solo_clap_button"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:onClick="findOpponent"
-      android:text="@string/action_find_opponents"
-      style="@style/Widget.AppCompat.Button.Colored"/>
+      android:onClick="doOwnClap"
+      android:text="SOLO CLAP" />
+
 
   <Button
-      android:id="@+id/disconnect"
+      android:id="@+id/shared_clap_button"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:onClick="disconnect"
-      android:text="@string/action_disconnect"
-      style="@style/Widget.AppCompat.Button.Colored"/>
+      android:onClick="sendClap"
+      android:text="SHARED CLAP" />
+
+  <Button
+    android:id="@+id/disconnect"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Disconnect"
+    android:onClick="disconnect"/>
+
+  <Button
+      android:id="@+id/connect"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Connect"
+      android:onClick="connect"/>
 </LinearLayout>
