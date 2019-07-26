@@ -5,44 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/common_google_signin_btn_text_dark_focused">
+    android:background="#000000">
 
   <TextView
       android:id="@+id/name"
       style="@style/StatusText"
       android:layout_width="414dp"
-      android:background="#0055FF"
       android:backgroundTint="#00000000"
       android:backgroundTintMode="add"
       android:padding="10dp"
-      android:textColor="#FFFFFF"/>
+      android:textColor="#00FFFF"/>
 
   <TextView
       android:id="@+id/opponent_name"
       style="@style/StatusText"
-      android:background="#FF0000"
       android:padding="10dp"
-      android:textColor="#FFFFFF"/>
+      android:textColor="#FF0000"/>
 
   <TextView
       android:id="@+id/status"
       style="@style/StatusText"
-      android:textColor="#FFFFFF"/>
+      android:textColor="#00FFFF"
+      android:padding="10dp"
+      />
 
   <ProgressBar
       android:id="@+id/progress_bar"
       style="?android:attr/progressBarStyle"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:indeterminateTint="#ff0000"/>
-
-  <TextView
-      android:id="@+id/score"
-      android:layout_width="match_parent"
-      android:layout_height="0dp"
-      android:layout_weight="1"
-      android:gravity="center"
-      android:textSize="80sp"/>
+      android:indeterminateTint="#ff0000" />
 
   <LinearLayout
       android:layout_width="match_parent"
@@ -50,32 +42,74 @@
       android:orientation="horizontal">
   </LinearLayout>
 
-  <Button
-      android:id="@+id/solo_clap_button"
+  <View
+      android:id="@+id/divider"
+      android:layout_width="match_parent"
+      android:layout_height="2dp"
+      android:background="#FF0000"
+      android:layout_margin="20dp"/>
+
+  <ProgressBar
+      android:id="@+id/play_progress_bar"
+      style="?android:attr/progressBarStyleHorizontal"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:onClick="doOwnClap"
-      android:text="SOLO CLAP" />
-
+      android:layout_marginLeft="10dp"
+      android:layout_marginRight="10dp"
+      android:progressBackgroundTint="#FF0000"
+      android:progressTint="#00FFFF"
+      />
 
   <Button
       android:id="@+id/shared_clap_button"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_margin="10dp"
+      android:layout_marginTop="20dp"
+      android:background="@drawable/button_shared_clap"
       android:onClick="sendClap"
-      android:text="SHARED CLAP" />
+      android:padding="20dp"
+      android:text="SHARED CLAP"
+      android:textColor="#000000"
+      android:textSize="16sp" />
 
   <Button
-    android:id="@+id/disconnect"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Disconnect"
-    android:onClick="disconnect"/>
+      android:background="@drawable/button_solo_clap"
+      android:id="@+id/solo_clap_button"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:onClick="doOwnClap"
+      android:text="SOLO CLAP"
+      android:padding="10dp"
+      android:layout_marginRight="20dp"
+      android:layout_marginLeft="20dp"
+      android:layout_marginBottom="10dp"
+      android:textColor="#00FFFF"
+      android:textSize="16sp"/>
+
+  <Button
+      android:id="@+id/disconnect"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="20dp"
+      android:layout_marginRight="20dp"
+      android:layout_marginTop="50dp"
+      android:background="@drawable/button_rounded_disconnect"
+      android:onClick="disconnect"
+      android:text="@string/disconnect"
+      android:textColor="#ff0000" />
 
   <Button
       android:id="@+id/connect"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="Connect"
-      android:onClick="connect"/>
+      android:layout_marginTop="50dp"
+      android:layout_marginLeft="20dp"
+      android:layout_marginRight="20dp"
+      android:background="@drawable/button_rounded_connect"
+      android:onClick="connect"
+      android:text="@string/connect"
+      android:textColor="#00FFFF" />
+
+
 </LinearLayout>

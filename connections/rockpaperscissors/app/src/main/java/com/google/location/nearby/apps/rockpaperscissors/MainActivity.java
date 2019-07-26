@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private TextView connectButton;
     private TextView disconnectButton;
+    private ProgressBar playProgressBar;
 
     public void doClap(String fromEndpointId, String payloadUuid){
         Log.i(TAG, "Propagating to children the UUID: " + payloadUuid);
@@ -94,9 +95,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void doOwnClap(){
         if(clap == null)
-            clap = new Clap(this);
+            clap = new Clap(this, playProgressBar);
 
-        clap.mp.start();
+        clap.play();
     }
 
     // Callbacks for receiving payloads
@@ -124,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         public void onEndpointFound(String endpointId, DiscoveredEndpointInfo info) {
           Log.i(TAG, "onEndpointFound: endpoint found, connecting");
             setStatusText(getString(R.string.status_connecting));
-            progressBar.setIndeterminateTintList(ColorStateList.valueOf(Color.GREEN));
+            progressBar.setIndeterminateTintList(ColorStateList.valueOf(Color.rgb(0, 255, 255)));
             connectionsClient.requestConnection(codeName, endpointId, connectionLifecycleCallback);
         }
 
@@ -189,18 +190,18 @@ public class MainActivity extends AppCompatActivity {
         opponentText = findViewById(R.id.opponent_name);
         statusText = findViewById(R.id.status);
         sharedClapButton = findViewById(R.id.shared_clap_button);
-        sharedClapButton.setEnabled(false);
-
 
         connectButton = findViewById(R.id.connect);
         disconnectButton = findViewById(R.id.disconnect);
-        connectButton.setEnabled(false);
+        connectButton.setVisibility(View.GONE);
 
         TextView nameView = findViewById(R.id.name);
         nameView.setText(getString(R.string.codename, codeName));
 
         progressBar = findViewById(R.id.progress_bar);
         progressBar.setIndeterminateTintList(ColorStateList.valueOf(Color.RED));
+        playProgressBar = findViewById(R.id.play_progress_bar);
+        playProgressBar.setVisibility(View.INVISIBLE);
 
         connectionsClient = Nearby.getConnectionsClient(this);
         startAdvertising();
@@ -219,8 +220,8 @@ public class MainActivity extends AppCompatActivity {
         connectionsClient = null;
         setStatusText(getString(R.string.status_disconnected));
         progressBar.setVisibility(View.INVISIBLE);
-        disconnectButton.setEnabled(false);
-        connectButton.setEnabled(true);
+        disconnectButton.setVisibility(View.GONE);
+        connectButton.setVisibility(View.VISIBLE);
     }
 
     public void connect(View view){
@@ -230,8 +231,8 @@ public class MainActivity extends AppCompatActivity {
         setStatusText(getString(R.string.status_searching));
         progressBar.setIndeterminateTintList(ColorStateList.valueOf(Color.RED));
         progressBar.setVisibility(View.VISIBLE);
-        connectButton.setEnabled(false);
-        disconnectButton.setEnabled(true);
+        disconnectButton.setVisibility(View.VISIBLE);
+        connectButton.setVisibility(View.GONE);
     }
 
     @Override

@@ -26,4 +26,9 @@
   <string name="choice_scissors">Scissors</string>
 
   <string name="game_score">%1$d : %2$d</string>
+
+  <string name="connect">Connect</string>
+  <string name="disconnect">Disconnect</string>
+
+
 </resources>
